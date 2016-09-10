@@ -1,0 +1,37 @@
+<VirtualHost *:80>
+    ServerName www.nobuto-murata.org
+    ServerAlias nobuto-murata.org
+
+    Redirect permanent "/" "https://www.nobuto-murata.org/"
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName www.nobuto-murata.org
+    ServerAlias nobuto-murata.org
+
+    <If "req('Host') != 'www.nobuto-murata.org'">
+        Redirect permanent "/" "https://www.nobuto-murata.org/"
+    </If>
+
+    DocumentRoot /var/www/www.nobuto-murata.org
+    <Directory /var/www/www.nobuto-murata.org>
+        Options -Indexes
+    </Directory>
+
+    RedirectMatch 404 "/\."
+    ErrorDocument 404 "/404.html"
+    <Location "/404.html">
+        <If "-z %{ENV:REDIRECT_STATUS}">
+            Redirect 404 /404.html
+        </If>
+    </Location>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    SSLEngine on
+    Header set Strict-Transport-Security "max-age=31536000"
+    SSLCertificateFile /etc/letsencrypt/live/www.nobuto-murata.org/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/www.nobuto-murata.org/privkey.pem
+    Include /etc/letsencrypt/options-ssl-apache.conf
+</VirtualHost>
