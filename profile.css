@@ -7,17 +7,21 @@ body {
 a, a:focus, a:hover {
     color: #888;
 }
+h1 {
+    font-size: 22px;
+}
 .profile-card {
     margin: 48px auto;
     text-align: center;
 }
 .profile-img {
     margin: 24px auto;
-    width: 8em;
+    width: 128px;
     box-shadow: 0px 0px 2px #fff;
 }
 .social-icons {
-    max-width: 24em;
+    max-width: 340px;
+    margin: 0 auto;
 }
 .fa-inverse {
     text-shadow: -1px -1px 0px #555;
