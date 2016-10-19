@@ -10,6 +10,7 @@ a, a:focus, a:hover {
 }
 h1 {
     font-size: 22px;
+    font-weight: 400;
 }
 .profile-card {
     margin: 48px auto;
