@@ -2,7 +2,7 @@ body {
     background-color: #333;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
-    font-family: Ubuntu, sans-serif;
+    font-family: Ubuntu, Hannari, sans-serif;
 }
 a, a:focus, a:hover {
     color: #888;
