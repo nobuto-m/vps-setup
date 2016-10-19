@@ -3,6 +3,7 @@ body {
     color: #fff;
     text-shadow: 1px 1px 1px #000;
     font-family: Ubuntu, 'Noto Sans Japanese', sans-serif;
+    font-weight: 400;
 }
 a, a:focus, a:hover {
     color: #888;
