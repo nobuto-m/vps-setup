@@ -2,3 +2,42 @@
 - name: apt install thelounge
   apt:
     deb: https://github.com/thelounge/thelounge/releases/download/v3.2.0/thelounge_3.2.0-1_all.deb
+
+- set_fact:
+    thelounge_config_path: /etc/thelounge/config.js
+
+- name: bind localhost
+  replace:
+    path: "{{ thelounge_config_path }}"
+    regexp: 'host: undefined,'
+    replace: 'host: 127.0.0.1,'
+
+- name: enable prefetch
+  replace:
+    path: "{{ thelounge_config_path }}"
+    regexp: 'prefetch: false,'
+    replace: 'prefetch: true,'
+
+- name: enable proxy for prefetch
+  replace:
+    path: "{{ thelounge_config_path }}"
+    regexp: 'prefetchStorage: false,'
+    replace: 'prefetchStorage: true,'
+
+- name: disable log globally
+  replace:
+    path: "{{ thelounge_config_path }}"
+    regexp: 'messageStorage: .*,'
+    replace: 'messageStorage: [],'
+
+- name: disable log globally
+  replace:
+    path: "{{ thelounge_config_path }}"
+    regexp: 'messageStorage: .*,'
+    replace: 'messageStorage: [],'
+
+- name: mark as reverseProxy
+  replace:
+    path: "{{ thelounge_config_path }}"
+    regexp: 'reverseProxy: false,'
+    replace: 'reverseProxy: true,'
