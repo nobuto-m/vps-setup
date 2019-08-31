@@ -12,26 +12,18 @@
     regexp: 'host: undefined,'
     replace: "host: '127.0.0.1',"
 
-- name: enable prefetch
+- name: enable properties
   replace:
     path: "{{ thelounge_config_path }}"
-    regexp: 'prefetch: false,'
-    replace: 'prefetch: true,'
-
-- name: enable proxy for prefetch
-  replace:
-    path: "{{ thelounge_config_path }}"
-    regexp: 'prefetchStorage: false,'
-    replace: 'prefetchStorage: true,'
+    regexp: "{{ item }}: false,"
+    replace: "{{ item }}: true,"
+  with_items:
+    - prefetch
+    - prefetchStorage
+    - reverseProxy
 
 - name: disable log globally
   replace:
     path: "{{ thelounge_config_path }}"
     regexp: 'messageStorage: .*,'
     replace: 'messageStorage: [],'
-
-- name: mark as reverseProxy
-  replace:
-    path: "{{ thelounge_config_path }}"
-    regexp: 'reverseProxy: false,'
-    replace: 'reverseProxy: true,'
