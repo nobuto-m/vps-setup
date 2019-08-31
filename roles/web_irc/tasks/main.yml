@@ -30,12 +30,6 @@
     regexp: 'messageStorage: .*,'
     replace: 'messageStorage: [],'
 
-- name: disable log globally
-  replace:
-    path: "{{ thelounge_config_path }}"
-    regexp: 'messageStorage: .*,'
-    replace: 'messageStorage: [],'
-
 - name: mark as reverseProxy
   replace:
     path: "{{ thelounge_config_path }}"
