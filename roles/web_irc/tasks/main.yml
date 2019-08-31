@@ -10,7 +10,7 @@
   replace:
     path: "{{ thelounge_config_path }}"
     regexp: 'host: undefined,'
-    replace: 'host: 127.0.0.1,'
+    replace: "host: '127.0.0.1',"
 
 - name: enable prefetch
   replace:
