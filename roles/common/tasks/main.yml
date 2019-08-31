@@ -1,11 +1,16 @@
 ---
 - name: auto-restart services on package update
-  debconf:
-    name: libc6
-    question: libraries/restart-without-asking
-    value: true
-    vtype: boolean
-  changed_when: false
+  block:
+    - debconf:
+        name: libc6
+        question: libraries/restart-without-asking
+        value: 'true'
+        vtype: boolean
+    - debconf:
+        name: libc6
+        question: libraries/restart-without-asking
+        value: 'true'
+        vtype: seen
 
 - name: apt update
   apt:
