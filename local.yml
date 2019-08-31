@@ -2,5 +2,5 @@
 - hosts: localhost
 
   roles:
-    - role:common
+    - role: common
       become: yes
