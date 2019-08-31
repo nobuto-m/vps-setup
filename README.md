@@ -1,5 +1,19 @@
 Launch one VPS instance with Ubuntu 18.04 LTS
 
+Add swapfile.
+
+```bash
+sudo dd if=/dev/zero of=/swap.img bs=4M count=256
+sudo chmod 0600 /swap.img
+sudo mkswap /swap.img
+
+cat <<EOF | sudo tee -a /etc/fstab
+/swap.img none swap sw 0 0
+EOF
+
+sudo swapon -a
+```
+
 Add another SSH port.
 
 ```bash
