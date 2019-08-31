@@ -5,6 +5,7 @@
     question: libraries/restart-without-asking
     value: true
     vtype: boolean
+  changed_when: false
 
 - name: apt update
   apt:
@@ -14,3 +15,8 @@
 - name: apt dist-upgrade
   apt:
     upgrade: dist
+
+- name: apt install etckeeper
+  apt:
+    name: etckeeper
+    state: present
