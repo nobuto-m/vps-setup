@@ -48,8 +48,8 @@ Run
 ansible-playbook -vv local.yml
 ```
 
+Add an user to thelounge
 
-
-prefetch: true
-prefetchStorage: true
-
+```
+sudo -u thelounge thelounge add '<USERNAME>'
+```
