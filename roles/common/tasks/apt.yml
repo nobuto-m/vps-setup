@@ -3,7 +3,7 @@
   debconf:
     name: libc6
     question: libraries/restart-without-asking
-    value: 'true'
+    value: true
     vtype: boolean
 
 - name: apt update
