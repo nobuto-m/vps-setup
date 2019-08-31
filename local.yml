@@ -4,3 +4,15 @@
   roles:
     - role: common
       become: yes
+
+    - role: irc_bouncer
+      become: yes
+
+    - role: web_irc
+      become: yes
+
+    - role: reverse_proxy
+      become: yes
+
+    - role: demultiplexer
+      become: yes

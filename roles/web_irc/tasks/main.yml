@@ -1,0 +1,4 @@
+---
+- name: apt install thelounge
+  apt:
+    deb: https://github.com/thelounge/thelounge/releases/download/v3.2.0/thelounge_3.2.0-1_all.deb

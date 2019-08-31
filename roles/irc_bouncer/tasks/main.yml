@@ -1,0 +1,5 @@
+---
+- name: apt install znc
+  apt:
+    name: znc
+    state: present
