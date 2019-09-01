@@ -21,6 +21,12 @@
     dest: /etc/sslh/sslh.cfg
   register: sslh_config
 
+- name: sslh transparent support
+  copy:
+    src: files/90-local-lo.yaml
+    dest: /etc/netplan/
+  register: netplan
+
 - name: sslh restart
   systemd:
     name: sslh

@@ -1,0 +1,11 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    lo:
+      match:
+        name: lo
+      routing-policy:
+       - from: 0.0.0.0/0
+         table: 100
+         mark: 1
