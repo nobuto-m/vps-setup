@@ -3,3 +3,26 @@
   apt:
     name: sslh
     state: present
+
+- name: set config path
+  lineinfile:
+    path: /etc/sslh/sslh.cfg
+    regexp: '^DAEMON_OPTS='
+    line: "DAEMON_OPTS='--config /etc/sslh/sslh.cfg'"
+
+- name: sslh config dir
+  file:
+    path: /etc/sslh
+    state: directory
+
+- name: sslh config file
+  template:
+    src: templates/sslh.cfg.j2
+    dest: /etc/sslh/sslh.cfg
+  register: sslh_config
+
+- name: sslh restart
+  systemd:
+    name: sslh
+    status: restarted
+  when: sslh_config is changed
