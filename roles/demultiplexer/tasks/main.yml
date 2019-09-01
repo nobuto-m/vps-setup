@@ -16,8 +16,8 @@
     state: directory
 
 - name: sslh config file
-  template:
-    src: templates/sslh.cfg.j2
+  copy:
+    src: files/sslh.cfg
     dest: /etc/sslh/sslh.cfg
   register: sslh_config
 
