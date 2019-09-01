@@ -28,6 +28,7 @@
 - name: get ssh ports
   shell: "grep '^Port ' /etc/ssh/sshd_config | awk '{print $2}'"
   register: ssh_ports
+  changed_when: false
 
 - name: ufw limit ssh
   ufw:
