@@ -11,3 +11,9 @@ network:
           from: 0.0.0.0/0
           mark: 1
           table: 100
+      routes:
+        # ip route add local 0.0.0.0/0 dev lo table 100
+        - table: 100
+          to: 0.0.0.0/0
+          scope: host
+          # type: local  # LP: #1842202

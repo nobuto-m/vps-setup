@@ -25,7 +25,11 @@
   copy:
     src: files/90-local-lo.yaml
     dest: /etc/netplan/
-  register: netplan
+  register: netplan_config
+
+- name: netplay apply
+  command: netplan apply
+  when: netplan_config is changed
 
 - name: sslh restart
   systemd:
