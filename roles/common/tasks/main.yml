@@ -26,9 +26,13 @@
     default: allow
 
 - name: get ssh ports
-  command: "grep '^Port ' /etc/ssh/sshd_config | awk '{print $2}'"
+  shell: "grep '^Port ' /etc/ssh/sshd_config | awk '{print $2}'"
   register: ssh_ports
 
 - name: ufw limit ssh
-  command: ufw limit {{ item }}/tcp comment ssh
-  with_items: {{ ssh_ports.stdout_lines | default(22) }}
+  ufw:
+    rule: limit
+    port: {{ item }}
+    proto: tcp
+    comment: ssh
+  with_items: "{{ ssh_ports.stdout_lines | default(22) }}"
