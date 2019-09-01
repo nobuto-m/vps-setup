@@ -6,7 +6,7 @@
 
 - name: set config path
   lineinfile:
-    path: /etc/sslh/sslh.cfg
+    path: /etc/default/sslh
     regexp: '^DAEMON_OPTS='
     line: "DAEMON_OPTS='--config /etc/sslh/sslh.cfg'"
 
