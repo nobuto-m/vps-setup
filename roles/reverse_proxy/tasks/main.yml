@@ -4,18 +4,21 @@
     name: apache2
     state: present
 
-- mame: listen on localhost only
+- mame: listen on alternative ports
   replace:
     path: /etc/apache2/ports.conf
-    regexp: 'Listen {{ item }}$'
-    replace: 'Listen 127.0.0.1:{{ item }}'
-  with_items:
-    - 80
-    - 443
-  register: bind_address
+    regexp: 'Listen {{ port.orig }}$'
+    replace: 'Listen {{ port.new }}'
+  var:
+    port:
+      - orig: 80
+        new: 70
+      - orig: 443
+        new: 433
+  register: bind_port
 
 - name: restart apache2
   systemd:
     name: apache2
     state: restarted
-  when: bind_address is changed
+  when: bind_port is changed
