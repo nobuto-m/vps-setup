@@ -3,3 +3,19 @@
   apt:
     name: apache2
     state: present
+
+- mame: listen on localhost only
+  replace:
+    path: /etc/apache2/ports.conf
+    regexp: 'Listen {{ item }}$'
+    replace: 'Listen 127.0.0.1:{{ item }}'
+  with_items:
+    - 80
+    - 443
+  register: bind_address
+
+- name: restart apache2
+  systemd:
+    name: apache2
+    state: restarted
+  when: bind_address is changed
