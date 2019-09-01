@@ -11,7 +11,7 @@ listen:
 
 protocols:
 (
-     { name: "ssh"; host: "{{ ansible_default_ipv4.address }}"; port: "22"; keepalive: true; },
+     { name: "ssh"; host: "{{ ansible_default_ipv4.address }}"; port: "22"; },
      { name: "http"; host: "{{ ansible_default_ipv4.address }}"; port: "70"; },
      { name: "tls"; host: "{{ ansible_default_ipv4.address }}"; port: "433"; },
      { name: "openvpn"; host: "{{ ansible_default_ipv4.address }}"; port: "1194"; }
