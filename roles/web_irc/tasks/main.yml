@@ -3,7 +3,7 @@
   get_url:
     url: https://github.com/thelounge/thelounge/releases/download/v3.2.0/thelounge_3.2.0-1_all.deb
     checksum: 'sha256:42a130b57395fdcd0f3b966f5e01375fc56ae12fc7281b1927cd88d99ba68df6'
-    dest: /root/
+    dest: /root/thelounge_3.2.0-1_all.deb
   register: thelounge_deb
 
 - name: apt install thelounge
