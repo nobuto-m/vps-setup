@@ -6,12 +6,12 @@ user: "nobody";
 listen:
 (
     { host: "0.0.0.0"; port: "80"; },
-    { host: "0.0.0.0"; port: "443"; }
+    { host: "0.0.0.0"; port: "443"; },
 );
 
 protocols:
 (
-     { name: "ssh"; host: "{{ ansible_default_ipv4.address }}"; port: "22"; keepalive: true; }
+     { name: "ssh"; host: "{{ ansible_default_ipv4.address }}"; port: "22"; keepalive: true; },
      { name: "http"; host: "{{ ansible_default_ipv4.address }}"; port: "70"; },
      { name: "tls"; host: "{{ ansible_default_ipv4.address }}"; port: "433"; },
      { name: "openvpn"; host: "{{ ansible_default_ipv4.address }}"; port: "1194"; },
