@@ -7,14 +7,13 @@
 - mame: listen on alternative ports
   replace:
     path: /etc/apache2/ports.conf
-    regexp: 'Listen {{ port.orig }}$'
-    replace: 'Listen {{ port.new }}'
-  var:
-    port:
-      - orig: 80
-        new: 70
-      - orig: 443
-        new: 433
+    regexp: 'Listen {{ item.orig }}$'
+    replace: 'Listen {{ item.new }}'
+  with_items:
+    - orig: 80
+      new: 70
+    - orig: 443
+      new: 433
   register: bind_port
 
 - name: restart apache2
