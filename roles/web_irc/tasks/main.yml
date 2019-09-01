@@ -19,6 +19,7 @@
     path: "{{ thelounge_config_path }}"
     regexp: 'host: undefined,'
     replace: "host: '127.0.0.1',"
+  register: thelounge_bind
 
 - name: enable properties
   replace:
@@ -35,3 +36,9 @@
     path: "{{ thelounge_config_path }}"
     regexp: 'messageStorage: .*,'
     replace: 'messageStorage: [],'
+
+- name: restart thelounge
+  systemd:
+    name: thelounge
+    state: restarted
+  when: thelounge_bind is changed
