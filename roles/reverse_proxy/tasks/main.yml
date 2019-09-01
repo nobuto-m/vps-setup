@@ -4,6 +4,11 @@
     name: apache2
     state: present
 
+- name: apt install certbot and apache plugin
+  apt:
+    name: [certbot, python3-certbot-apache]
+    state: present
+
 - mame: listen on alternative ports
   replace:
     path: /etc/apache2/ports.conf
