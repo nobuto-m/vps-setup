@@ -6,6 +6,7 @@ network:
       match:
         name: lo
       routing-policy:
-       - from: 0.0.0.0/0
-         table: 100
+       - priority: 100
+         from: 0.0.0.0/0
          mark: 1
+         table: 100
