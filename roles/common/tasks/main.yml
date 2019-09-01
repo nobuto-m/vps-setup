@@ -6,6 +6,12 @@
     value: 'true'
     vtype: boolean
 
+- name: auto reboot with unattended-upgrades
+  lineinfile:
+    path: /etc/apt/apt.conf.d/50unattended-upgrades
+    regex: 'Unattended-Upgrade::Automatic-Reboot ';
+    line: 'Unattended-Upgrade::Automatic-Reboot "true";'
+
 - name: apt update
   apt:
     update_cache: yes
