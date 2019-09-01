@@ -6,7 +6,8 @@ network:
       match:
         name: lo
       routing-policy:
-       - priority: 100
-         from: 0.0.0.0/0
-         mark: 1
-         table: 100
+        # ip rule add fwmark 0x1 lookup 100 priority 100
+        - priority: 100
+          from: 0.0.0.0/0
+          mark: 1
+          table: 100
