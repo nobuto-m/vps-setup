@@ -43,6 +43,7 @@
     rule: limit
     port: "{{ item }}"
     proto: tcp
+    direction: in
     interface: lo
     comment: 'ssh on lo'
   with_items: "{{ ssh_ports.stdout_lines | default(22, true) }}"
