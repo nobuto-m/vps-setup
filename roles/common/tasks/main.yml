@@ -36,4 +36,4 @@
     port: "{{ item }}"
     proto: tcp
     comment: ssh
-  with_items: "{{ ssh_ports.stdout_lines | default(22) }}"
+  with_items: "{{ ssh_ports.stdout_lines | default(22, true) }}"
