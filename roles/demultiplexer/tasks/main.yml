@@ -61,15 +61,6 @@
     state: reloaded
   when: ufw_before is changed
 
-- name: ufw limit ssh on lo behind sslh
-  ufw:
-    rule: limit
-    port: 22
-    proto: tcp
-    direction: in
-    interface: lo
-    comment: 'ssh on lo'
-
 - name: sslh transparent support - routing
   copy:
     src: files/90-local-lo.yaml
