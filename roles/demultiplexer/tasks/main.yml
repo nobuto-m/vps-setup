@@ -32,7 +32,13 @@
      - name: net.ipv4.conf.all.route_localnet
        value: 1
 
-- name: sslh transparent support - iptables
+- name: sslh transparent support - apply iptables rules to lo
+  replace:
+    path: /etc/ufw/before.rules
+    regexp: '^-A ufw-before.* lo .*'
+    replace: '#\0'
+
+- name: sslh transparent support - iptables mark packets
   blockinfile:
     path: /etc/ufw/before.rules
     block: |
