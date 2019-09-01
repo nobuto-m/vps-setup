@@ -1,7 +1,14 @@
 ---
+- name: get thelounge
+  get_url:
+    url: https://github.com/thelounge/thelounge/releases/download/v3.2.0/thelounge_3.2.0-1_all.deb
+    dest: /root/
+  register: thelounge_deb
+
 - name: apt install thelounge
   apt:
-    deb: https://github.com/thelounge/thelounge/releases/download/v3.2.0/thelounge_3.2.0-1_all.deb
+    deb: /root/thelounge_3.2.0-1_all.deb
+  when: thelounge_deb is changed
 
 - set_fact:
     thelounge_config_path: /etc/thelounge/config.js
