@@ -43,13 +43,3 @@
     proto: tcp
     comment: ssh
   with_items: "{{ ssh_ports.stdout_lines | default(22, true) }}"
-
-- name: ufw limit ssh on lo for demultiplexer
-  ufw:
-    rule: limit
-    port: "{{ item }}"
-    proto: tcp
-    direction: in
-    interface: lo
-    comment: 'ssh on lo'
-  with_items: "{{ ssh_ports.stdout_lines | default(22, true) }}"
