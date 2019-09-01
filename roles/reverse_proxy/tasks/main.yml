@@ -16,6 +16,18 @@
       new: 433
   register: bind_port
 
+- name: enable modules
+  apache2_module:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - ssl
+    - headers
+    - rewrite
+    - proxy
+    - proxy_http
+    - proxy_wstunnel
+
 - name: restart apache2
   systemd:
     name: apache2
