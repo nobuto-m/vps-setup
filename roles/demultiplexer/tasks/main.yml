@@ -35,8 +35,8 @@
 - name: sslh transparent support - apply iptables rules to lo
   replace:
     path: /etc/ufw/before.rules
-    regexp: '^-A ufw-before.* lo .*'
-    replace: '#\0'
+    regexp: '^(-A ufw-before.* lo .*)'
+    replace: '#\1'
 
 - name: sslh transparent support - iptables mark packets
   blockinfile:
