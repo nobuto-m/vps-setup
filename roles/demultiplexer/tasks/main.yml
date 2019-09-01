@@ -21,7 +21,41 @@
     dest: /etc/sslh/sslh.cfg
   register: sslh_config
 
-- name: sslh transparent support
+- name: sslh transparent support - sysctl
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    sysctl_file: /etc/sysctl.d/99-local.conf
+  with_items:
+     - name: net.ipv4.conf.default.route_localnet
+       value: 1
+     - name: net.ipv4.conf.all.route_localnet
+       value: 1
+
+- name: sslh transparent support - iptables
+  blockinfile:
+    path: /etc/ufw/before.rules
+    block: |
+      *raw
+      -A PREROUTING ! -i lo -d 127.0.0.0/8 -j DROP
+      COMMIT
+
+      *nat
+      -A OUTPUT -m owner --uid-owner sslh -p tcp --tcp-flags FIN,SYN,RST,ACK SYN -j CONNMARK --set-xmark 0x01/0x0f
+      COMMIT
+
+      *mangle
+      -A POSTROUTING ! -o lo -s 127.0.0.0/8 -j DROP
+      -A OUTPUT ! -o lo -p tcp -m connmark --mark 0x01/0x0f -j CONNMARK --restore-mark --mask 0x0f
+      COMMIT
+  register: ufw_before
+
+- name: ufw reload
+  ufw:
+    state: reloaded
+  when: ufw_before is changed
+
+- name: sslh transparent support - routing
   copy:
     src: files/90-local-lo.yaml
     dest: /etc/netplan/
