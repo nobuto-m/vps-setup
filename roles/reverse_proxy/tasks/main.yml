@@ -36,6 +36,18 @@
     - /etc/apache2/sites-enabled/000-default.conf
     - /var/www/html/index.html
 
+- name: set fallback site
+  copy:
+    src: files/fallback.apache2.conf
+    dest: /etc/apache2/sites-available/fallback.conf
+  register: thelounge_rproxy
+
+- name: enable fallback site
+  file:
+    src: /etc/apache2/sites-available/fallback.conf
+    dest: /etc/apache2/sites-enabled/fallback.conf
+    state: link
+
 - name: restart apache2
   systemd:
     name: apache2
