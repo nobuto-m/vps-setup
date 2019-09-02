@@ -28,6 +28,11 @@
     - proxy_http
     - proxy_wstunnel
 
+- name: disable the default site
+  file:
+    path: /etc/apache2/sites-enabled/000-default.conf
+    state: absent
+
 - name: restart apache2
   systemd:
     name: apache2
