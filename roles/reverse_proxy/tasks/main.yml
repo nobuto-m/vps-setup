@@ -38,8 +38,8 @@
 
 - name: set fallback site
   copy:
-    src: files/fallback.apache2.conf
-    dest: /etc/apache2/sites-available/fallback.conf
+    src: files/000-fallback.apache2.conf
+    dest: /etc/apache2/sites-available/000-fallback.conf
   register: thelounge_rproxy
 
 - name: enable fallback site
