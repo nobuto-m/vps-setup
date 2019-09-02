@@ -49,6 +49,12 @@
     dest: /etc/apache2/sites-available/{{ web_irc_fqdn }}.conf
   register: thelounge_rproxy
 
+- name: enable site
+  file:
+    src: /etc/apache2/sites-available/{{ web_irc_fqdn }}.conf
+    dest: /etc/apache2/sites-enabled/{{ web_irc_fqdn }}.conf
+    state: link
+
 - name: apache2 reload
   systemd:
     name: apache2
