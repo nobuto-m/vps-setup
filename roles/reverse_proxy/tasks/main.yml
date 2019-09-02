@@ -44,8 +44,8 @@
 
 - name: enable fallback site
   file:
-    src: /etc/apache2/sites-available/fallback.conf
-    dest: /etc/apache2/sites-enabled/fallback.conf
+    src: /etc/apache2/sites-available/000-fallback.conf
+    dest: /etc/apache2/sites-enabled/000-fallback.conf
     state: link
 
 - name: restart apache2
