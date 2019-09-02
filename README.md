@@ -48,6 +48,12 @@ Run
 ansible-playbook -vv local.yml
 ```
 
+Let's encrypt
+
+```bash
+sudo certbot run --apache -d '<DOMAIN>'
+```
+
 Add an user to thelounge
 
 ```

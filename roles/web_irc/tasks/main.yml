@@ -42,3 +42,15 @@
     name: thelounge
     state: restarted
   when: thelounge_bind is changed
+
+- name: reverse proxy for the lounge
+  template:
+    src: templates/thelounge.apache2.conf
+    dest: /etc/apache2/sites-available/{{ web_irc_fqdn }}.conf
+  register: thelounge_rproxy
+
+- name: apache2 reload
+  systemctl:
+    name: apache2
+    state: reloaded
+  when: thelounge_rproxy is changed
