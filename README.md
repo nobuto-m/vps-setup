@@ -51,7 +51,7 @@ ansible-playbook -vv local.yml
 Let's encrypt
 
 ```bash
-sudo certbot run --apache -d '<DOMAIN>'
+sudo certbot certonly --apache -d '<DOMAIN>'
 ```
 
 Add an user to thelounge
