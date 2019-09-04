@@ -37,6 +37,12 @@
     regexp: 'messageStorage: .*,'
     replace: 'messageStorage: [],'
 
+- name: use empty leave message
+  replace:
+    path: "{{ thelounge_config_path }}"
+    regexp: 'leaveMessage: .*,'
+    replace: 'leaveMessage: "",'
+
 - name: restart thelounge
   systemd:
     name: thelounge
