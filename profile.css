@@ -2,15 +2,15 @@ body {
     background-color: #333;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
-    font-family: Ubuntu, 'Noto Sans Japanese', sans-serif;
-    font-weight: 400;
+    font-family: Ubuntu, 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif;
+    font-weight: 300;
 }
 a, a:focus, a:hover {
     color: #888;
 }
 h1 {
     font-size: 22px;
-    font-weight: 400;
+    font-weight: 300;
 }
 .name-ja {
     display: inline-block;
