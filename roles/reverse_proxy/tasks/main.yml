@@ -9,7 +9,7 @@
     name: [certbot, python3-certbot-apache]
     state: present
 
-- mame: listen on alternative port for HTTPS
+- name: listen on alternative port for HTTPS
   replace:
     path: /etc/apache2/ports.conf
     regexp: 'Listen 443$'
