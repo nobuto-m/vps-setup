@@ -50,7 +50,24 @@
     dest: /etc/apache2/sites-enabled/000-fallback.conf
     state: link
 
+- name: copy www-home contents
+  copy:
+    src: files/www-home/
+    dest: /var/www/www-home/
+
+- name: set www-home site
+  copy:
+    src: files/sites-available/www-home.conf
+    dest: /etc/apache2/sites-available/www-home.conf
+
+- name: enable fallback site
+  file:
+    src: /etc/apache2/sites-available/www-home.conf
+    dest: /etc/apache2/sites-enabled/www-home.conf
+    state: link
+
 - name: reload apache2
   systemd:
     name: apache2
     state: reloaded
+  changed_when: False
