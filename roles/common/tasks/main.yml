@@ -1,4 +1,12 @@
 ---
+- name: create a backup directory for a user
+  file:
+    path: /srv/backup
+    state: directory
+    mode: '0700'
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+
 - name: debconf auto-restart services on package update
   debconf:
     name: libc6
