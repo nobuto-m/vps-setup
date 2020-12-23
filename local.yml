@@ -5,7 +5,7 @@
     - role: common
       become: yes
 
-    - role: reverse_proxy
+    - role: web
       become: yes
 
     - role: demultiplexer
