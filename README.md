@@ -54,9 +54,3 @@ Let's encrypt
 ```bash
 sudo certbot certonly --apache -d '<DOMAIN>'
 ```
-
-Add an user to thelounge
-
-```
-sudo -u thelounge thelounge add '<USERNAME>'
-```

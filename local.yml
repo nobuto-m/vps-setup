@@ -1,20 +1,8 @@
 ---
 - hosts: localhost
 
-  vars_prompt:
-    - name: web_irc_fqdn
-      prompt: 'FQDN for hosting web irc'
-      default: thelounge.localhost.localdomain
-      private: no
-
   roles:
     - role: common
-      become: yes
-
-    - role: irc_bouncer
-      become: yes
-
-    - role: web_irc
       become: yes
 
     - role: reverse_proxy
