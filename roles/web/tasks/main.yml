@@ -25,6 +25,12 @@
     - headers
     - rewrite
 
+- name: restart apache2
+  systemd:
+    name: apache2
+    state: restarted
+  when: bind_port is changed
+
 - name: disable the default site
   file:
     path: "{{ item }}"
@@ -35,9 +41,8 @@
 
 - name: set fallback site
   copy:
-    src: files/000-fallback.apache2.conf
+    src: files/site-available/000-fallback.apache2.conf
     dest: /etc/apache2/sites-available/000-fallback.conf
-  register: thelounge_rproxy
 
 - name: enable fallback site
   file:
@@ -45,8 +50,7 @@
     dest: /etc/apache2/sites-enabled/000-fallback.conf
     state: link
 
-- name: restart apache2
+- name: reload apache2
   systemd:
     name: apache2
-    state: restarted
-  when: bind_port is changed
+    state: reloaded
