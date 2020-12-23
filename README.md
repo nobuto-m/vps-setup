@@ -59,4 +59,5 @@ Then, enable the site.
 
 ```bash
 sudo a2ensite www-home.conf
+sudo systemctl reload apache2
 ```
