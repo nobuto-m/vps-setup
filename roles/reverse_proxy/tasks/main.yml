@@ -24,9 +24,6 @@
     - ssl
     - headers
     - rewrite
-    - proxy
-    - proxy_http
-    - proxy_wstunnel
 
 - name: disable the default site
   file:
