@@ -52,5 +52,11 @@ ansible-playbook -vv local.yml
 Let's encrypt
 
 ```bash
-sudo certbot certonly --apache -d '<DOMAINS (Comma-separated list)>'
+sudo certbot certonly --apache -d '<DOMAINS (e.g., www.example.com,example.com)>'
+```
+
+Then, enable the site.
+
+```bash
+sudo a2ensite www-home.conf
 ```
