@@ -41,7 +41,7 @@
 
 - name: set fallback site
   copy:
-    src: files/site-available/000-fallback.apache2.conf
+    src: files/sites-available/000-fallback.apache2.conf
     dest: /etc/apache2/sites-available/000-fallback.conf
 
 - name: enable fallback site
