@@ -52,5 +52,5 @@ ansible-playbook -vv local.yml
 Let's encrypt
 
 ```bash
-sudo certbot certonly --apache -d '<DOMAIN>'
+sudo certbot certonly --apache -d '<DOMAINS (Comma-separated list)>'
 ```
