@@ -3,7 +3,7 @@ Launch one VPS instance with Ubuntu 18.04 LTS
 Add swapfile.
 
 ```bash
-sudo dd if=/dev/zero of=/swap.img bs=4M count=256
+sudo dd if=/dev/zero of=/swap.img bs=4M count=128
 sudo chmod 0600 /swap.img
 sudo mkswap /swap.img
 
@@ -27,6 +27,7 @@ sudo systemctl reload ssh
 ```
 
 Modify the instance's firewall rule to allow the alternate SSH port.
+Then restrict access to the port 22 except for "browser SSH".
 
 Install package(s).
 
