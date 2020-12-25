@@ -32,5 +32,6 @@ h1 {
     text-shadow: -1px -1px 0px #555;
 }
 .list-inline > li {
+    display: inline;
     padding: 5px;
 }
