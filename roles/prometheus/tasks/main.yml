@@ -9,3 +9,11 @@
   apt:
     name: prometheus-node-exporter
     state: present
+
+- name: scrape node-exporter
+  blockinfile:
+    path: /var/snap/prometheus/current/prometheus.yml
+    block: |
+        - job_name: node
+          static_configs:
+          - targets: ['localhost:9100']
