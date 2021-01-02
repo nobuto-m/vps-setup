@@ -1,0 +1,11 @@
+---
+- name: snap install prometheus
+  snap:
+    name: prometheus
+    channel: 2/stable
+    state: present
+
+- name: apt install prometheus-node-exporter
+  apt:
+    name: prometheus-node-exporter
+    state: present

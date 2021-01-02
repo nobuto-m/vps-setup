@@ -10,3 +10,6 @@
 
     - role: demultiplexer
       become: yes
+
+    - role: prometheus
+      become: yes
