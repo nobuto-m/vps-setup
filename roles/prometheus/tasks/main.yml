@@ -13,7 +13,7 @@
 - name: scrape node-exporter
   blockinfile:
     path: /var/snap/prometheus/current/prometheus.yml
-    block: |
+    block: |2
         - job_name: node
           static_configs:
           - targets: ['localhost:9100']
