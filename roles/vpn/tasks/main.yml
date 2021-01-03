@@ -14,3 +14,9 @@
   apt:
     name: tailscale
     state: present
+
+- name: use a random port for tailscale
+  lineinfile:
+    path: /etc/default/tailscaled
+    regexp: '^PORT='
+    line: 'PORT="0"'
