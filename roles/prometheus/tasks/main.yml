@@ -32,7 +32,7 @@
 
 - name: add Grafana apt repository
   apt_repository:
-    repo: https://packages.grafana.com/oss/deb stable main
+    repo: deb https://packages.grafana.com/oss/deb stable main
     state: present
 
 - name: apt install grafana
