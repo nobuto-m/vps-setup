@@ -39,3 +39,8 @@
   apt:
     name: grafana
     state: present
+
+- name: start grafana-server
+  systemd:
+    name: grafana-server
+    state: started
