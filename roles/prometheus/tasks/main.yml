@@ -10,13 +10,16 @@
     name: prometheus-node-exporter
     state: present
 
-- name: scrape node-exporter of localhost
+- name: scrape node-exporter
   blockinfile:
     path: /var/snap/prometheus/current/prometheus.yml
     block: |2
         - job_name: node
           static_configs:
-          - targets: ['localhost:9100']
+          - targets:
+            - 'localhost:9100'
+            - '100.118.229.71:9100' # darkbox, TODO: use a hostname
+            - '100.98.232.3:9100' # tokyo-jumpbox
 
 - name: restart prometheus
   systemd:
