@@ -10,7 +10,7 @@
     name: prometheus-node-exporter
     state: present
 
-- name: scrape node-exporter
+- name: scrape node-exporter of localhost
   blockinfile:
     path: /var/snap/prometheus/current/prometheus.yml
     block: |2
@@ -23,3 +23,19 @@
     name: snap.prometheus.prometheus
     state: restarted
   changed_when: False
+
+- name: add Grafana apt key
+  apt_key:
+    id: 4E40DDF6D76E284A4A6780E48C8C34C524098CB6
+    url: https://packages.grafana.com/gpg.key
+    keyring: /etc/apt/trusted.gpg.d/grafana.gpg
+
+- name: add Grafana apt repository
+  apt_repository:
+    repo: https://packages.grafana.com/oss/deb stable main
+    state: present
+
+- name: apt install grafana
+  apt:
+    name: prometheus-node-exporter
+    state: present
