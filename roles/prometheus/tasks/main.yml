@@ -16,15 +16,10 @@
     block: |2
         - job_name: node
           static_configs:
-          - targets: ['localhost:9100']
-            labels:
-              alias: localhost
-          - targets: ['darkbox.t.739141.xyz:9100']
-            labels:
-              alias: darkbox
-          - targets: ['tokyo-jumpbox.t.739141.xyz:9100']
-            labels:
-              alias: tokyo-jumpbox
+          - targets:
+            - 'localhost:9100'
+            - 'darkbox.t.739141.xyz:9100'
+            - 'tokyo-jumpbox.t.739141.xyz:9100'
 
 - name: restart prometheus
   systemd:
