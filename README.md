@@ -61,3 +61,9 @@ Then, enable the site.
 sudo a2ensite www-home.conf
 sudo systemctl reload apache2
 ```
+
+Enable VPN.
+
+```
+sudo tailscale up
+```

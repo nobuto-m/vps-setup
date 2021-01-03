@@ -1,0 +1,16 @@
+---
+- name: add tailscale apt key
+  apt_key:
+    id: 2596A99EAAB33821893C0A79458CA832957F5868
+    url: "https://pkgs.tailscale.com/stable/ubuntu/{{ ansible_distribution_release }}.gpg"
+    keyring: /etc/apt/trusted.gpg.d/tailscale.gpg
+
+- name: add tailscale apt repository
+  apt_repository:
+    repo: "deb https://pkgs.tailscale.com/stable/ubuntu {{ ansible_distribution_release }} main"
+    state: present
+
+- name: apt install tailscale
+  apt:
+    name: tailscale
+    state: present

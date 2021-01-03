@@ -5,6 +5,9 @@
     - role: common
       become: yes
 
+    - role: vpn
+      become: yes
+
     - role: web
       become: yes
 
