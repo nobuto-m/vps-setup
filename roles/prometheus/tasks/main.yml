@@ -43,6 +43,12 @@
     name: grafana
     state: present
 
+- name: grafana - set FQDN
+  lineinfile:
+    path: /etc/grafana/grafana.ini
+    regexp: '^\;*domain = '
+    line: 'domain = lightsail-oregon.t.739141.xyz"'
+
 - name: enable and start grafana-server
   systemd:
     name: grafana-server
