@@ -40,7 +40,8 @@
     name: grafana
     state: present
 
-- name: start grafana-server
+- name: enable and start grafana-server
   systemd:
     name: grafana-server
+    enabled: yes
     state: started
