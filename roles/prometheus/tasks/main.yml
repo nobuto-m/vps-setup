@@ -43,6 +43,12 @@
     name: grafana
     state: present
 
+- name: change the default port of grafana
+  lineinfile:
+    path: /etc/grafana/grafana.ini
+    regexp: '^;*http_port = '
+    line: 'http_port = 2990'
+
 - name: enable and start grafana-server
   systemd:
     name: grafana-server
