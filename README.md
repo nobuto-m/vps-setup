@@ -81,5 +81,6 @@ Grafana:
 1. change the admin password
 1. set up the default data source
 1. import dashboards
+   - default ones under `datasources`
    - Prometheus Node Exporter Full - https://grafana.com/grafana/dashboards/1860
    - Prometheus Node Exporter Full Old - https://github.com/rfrail3/grafana-dashboards/blob/master/prometheus/node-exporter-full-old.json
