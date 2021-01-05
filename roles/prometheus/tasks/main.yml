@@ -55,6 +55,24 @@
     enabled: yes
     state: started
 
+- name: install nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: nginx - disable the default site
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /etc/nginx/sites-enabled/default
+    - /var/www/html/index.nginx-debian.html
+
+- name: install the reverse proxy definition but not enable it
+  copy:
+    src: files/sites-available/grafana
+    dest: /etc/nginx/sites-available/grafana
+
 - name: certbot-dns-cloudflare - allow the plugin
   command: snap set certbot trust-plugin-with-root=ok
   changed_when: False
