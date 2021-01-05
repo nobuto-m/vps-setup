@@ -14,6 +14,10 @@
   blockinfile:
     path: /var/snap/prometheus/current/prometheus.yml
     block: |2
+        - job_name: 'grafana_metrics'
+          static_configs:
+          - targets: ['localhost:2990']
+
         - job_name: node
           static_configs:
           - targets:
