@@ -1,9 +1,19 @@
 server {
-    listen 3000 default_server;
-    listen [::]:3000 default_server;
+    listen 3000 ssl http2 default_server;
+    listen [::]:3000 ssl http2 default_server;
     server_name  _;
 
     location / {
         proxy_pass http://localhost:2990/;
     }
+
+    ssl_certificate /etc/letsencrypt/live/grafana-wildcard/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/grafana-wildcard/privkey.pem;
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:MozSSL:10m;  # about 40000 sessions
+    ssl_session_tickets off;
+
+    # modern configuration
+    ssl_protocols TLSv1.3;
+    ssl_prefer_server_ciphers off;
 }

@@ -68,13 +68,22 @@ Enable VPN.
 sudo tailscale up
 ```
 
-Let's encrypt for Grafana.
+Let's encrypt wildcard cert for Grafana.
 
 ```bash
 sudo certbot certonly \
+    -i nginx \
     --dns-cloudflare \
     --dns-cloudflare-credentials ~/.secrets/certbot/cloudflare.ini \
-    -d '<DOMAIN (e.g., grafana.t.example.com)>'
+    --cert-name grafana-wildcard \
+    -d '<DOMAIN (e.g., *.t.example.com)>'
+```
+
+Enable the reverse proxy with the alternate port.
+
+```bash
+sudo ln -s ../sites-available/grafana /etc/nginx/sites-enabled/
+sudo systemctl restart nginx
 ```
 
 Grafana:
