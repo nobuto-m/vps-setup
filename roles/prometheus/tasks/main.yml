@@ -48,3 +48,12 @@
     name: grafana-server
     enabled: yes
     state: started
+
+- name: certbot-dns-cloudflare - allow the plugin
+  command: snap set certbot trust-plugin-with-root=ok
+  changed_when: False
+
+- name: certbot-dns-cloudflare - install
+  snap:
+    name: certbot-dns-cloudflare
+    state: present

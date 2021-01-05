@@ -4,9 +4,10 @@
     name: apache2
     state: present
 
-- name: apt install certbot and apache plugin
-  apt:
-    name: [certbot, python3-certbot-apache]
+- name: snap install certbot
+  snap:
+    name: certbot
+    classic: yes
     state: present
 
 - name: listen on alternative port for HTTPS
