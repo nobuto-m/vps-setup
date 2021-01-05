@@ -49,7 +49,7 @@ Run
 ansible-playbook -vv local.yml
 ```
 
-Let's encrypt
+Let's encrypt for www-home.
 
 ```bash
 sudo certbot certonly --apache -d '<DOMAINS (e.g., www.example.com,example.com)>'
@@ -66,6 +66,15 @@ Enable VPN.
 
 ```
 sudo tailscale up
+```
+
+Let's encrypt for Grafana.
+
+```bash
+sudo certbot certonly \
+    --dns-cloudflare \
+    --dns-cloudflare-credentials ~/.secrets/certbot/cloudflare.ini \
+    -d '<DOMAIN (e.g., grafana.t.example.com)>'
 ```
 
 Grafana:
