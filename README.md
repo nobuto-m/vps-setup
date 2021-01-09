@@ -65,7 +65,7 @@ sudo systemctl reload apache2
 Enable VPN.
 
 ```
-sudo tailscale up
+sudo tailscale up --hostname '<visible hostname>'
 ```
 
 Let's encrypt wildcard cert for Grafana.
