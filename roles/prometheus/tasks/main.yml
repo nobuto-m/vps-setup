@@ -55,6 +55,10 @@
     regexp: '^;*http_port = '
     line: 'http_port = 2990'
 
+- name: grafana - grafana-piechart-panel
+  command: grafana-cli plugins install grafana-piechart-panel
+  changed_when: False
+
 - name: enable and start grafana-server
   systemd:
     name: grafana-server
