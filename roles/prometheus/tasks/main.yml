@@ -10,7 +10,13 @@
     name: prometheus-node-exporter
     state: present
 
-- name: scrape node-exporter
+- name: prometheus - localhost binding
+  lineinfile:
+    path: /var/snap/prometheus/current/daemon_arguments
+    regexp: '^ARGS='
+    line: 'ARGS="--web.listen-address=127.0.0.1:9090"'
+
+- name: scrape configurations
   blockinfile:
     path: /var/snap/prometheus/current/prometheus.yml
     block: "{{ lookup('file', 'files/prometheus_scrape_configs.yml') }}"
@@ -37,7 +43,13 @@
     name: grafana
     state: present
 
-- name: change the default port of grafana
+- name: grafana - localhost binding
+  lineinfile:
+    path: /etc/grafana/grafana.ini
+    regexp: '^;*http_addr = '
+    line: 'http_addr = 127.0.0.1'
+
+- name: grafana - change the default port in favor of nginx
   lineinfile:
     path: /etc/grafana/grafana.ini
     regexp: '^;*http_port = '
