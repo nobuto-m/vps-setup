@@ -14,14 +14,14 @@
       - 'quick-maas.t.739141.xyz:9101'
       - 'tokyo-jumpbox.t.739141.xyz:9100'
 
-  - job_name: maas-stats
-    metrics_path: /MAAS/metrics
-    static_configs:
-    - targets:
-      - 'quick-maas.t.739141.xyz:5241' # maas
-
   - job_name: maas
     static_configs:
     - targets:
       - 'quick-maas.t.739141.xyz:5238' # regiond
       - 'quick-maas.t.739141.xyz:5248' # rackd
+
+  - job_name: maas
+    metrics_path: /MAAS/metrics
+    static_configs:
+    - targets:
+      - 'quick-maas.t.739141.xyz:5241' # maas
