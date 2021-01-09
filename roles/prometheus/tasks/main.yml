@@ -46,7 +46,7 @@
 - name: grafana - localhost binding
   lineinfile:
     path: /etc/grafana/grafana.ini
-    regexp: '^;*http_addr = '
+    regexp: '^;*http_addr ='
     line: 'http_addr = 127.0.0.1'
 
 - name: grafana - change the default port in favor of nginx
