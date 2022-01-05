@@ -1,4 +1,4 @@
-Launch one VPS instance with Ubuntu 18.04 LTS
+Launch one VPS instance with Ubuntu 20.04 LTS
 
 Add swapfile.
 
