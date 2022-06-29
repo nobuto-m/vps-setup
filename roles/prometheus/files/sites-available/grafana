@@ -6,6 +6,7 @@ server {
     error_page 497 =301 https://$host:$server_port$request_uri;
 
     location / {
+        proxy_set_header Host $http_host;
         proxy_pass http://localhost:2990/;
     }
 
