@@ -11,10 +11,9 @@
     state: present
 
 - name: listen on alternative port for HTTPS
-  replace:
-    path: /etc/apache2/ports.conf
-    regexp: 'Listen 443$'
-    replace: 'Listen 433'
+  template:
+    src: templates/ports.conf
+    dest: /etc/apache2/ports.conf
   register: bind_port
 
 - name: enable modules
