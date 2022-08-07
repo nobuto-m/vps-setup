@@ -81,3 +81,8 @@
       ListenStream=
       ListenStream=9091
     create: yes
+
+- name: cockpit - start with the new port
+  systemd:
+    name: cockpit
+    state: started
