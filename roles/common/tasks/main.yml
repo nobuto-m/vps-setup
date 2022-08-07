@@ -81,8 +81,11 @@
       ListenStream=
       ListenStream=9091
     create: yes
+  register: cockpit_alt_port
 
-- name: cockpit - start with the new port
+- name: cockpit - restart with the new port
   systemd:
     name: cockpit
-    state: started
+    state: restarted
+    daemon_reload: yes
+  when: cockpit_alt_port is changed
