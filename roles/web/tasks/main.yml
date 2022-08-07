@@ -2,7 +2,7 @@
 - name: 'sysctl - LP: #1899852 for IPv6'
   sysctl:
     name: net.ipv6.ip_nonlocal_bind
-    value: 1
+    value: '1'
     sysctl_file: /etc/sysctl.d/99-local.conf
 
 - name: apt install apache2
