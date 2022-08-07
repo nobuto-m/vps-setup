@@ -93,3 +93,9 @@ Grafana:
    - default ones under `datasources`
    - Prometheus Node Exporter Full - https://grafana.com/grafana/dashboards/1860
    - Prometheus Node Exporter Full Old - https://github.com/rfrail3/grafana-dashboards/blob/master/prometheus/node-exporter-full-old.json
+
+Set the OS user password for Cockpit.
+
+```
+sudo passwd $USER
+```

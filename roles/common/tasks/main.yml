@@ -51,3 +51,33 @@
     proto: tcp
     comment: ssh
   with_items: "{{ ssh_ports.stdout_lines | default(22, true) }}"
+
+- name: apt install cockpit
+  apt:
+    name: cockpit
+    state: present
+
+- name: cockpit - not to use NetworkManager
+  apt:
+    name:
+    - cockpit-networkmanager
+    - network-manager
+    - wpasupplicant
+    - iw
+    state: absent
+    purge: yes
+    autoremove: yes
+
+- name: cockpit - systemd override directory
+  file:
+    path: /etc/systemd/system/cockpit.socket.d
+    state: directory
+
+- name: cockpit - use alternate port
+  blockinfile:
+    path: /etc/systemd/system/cockpit.socket.d/listen.conf
+    block: |
+      [Socket]
+      ListenStream=
+      ListenStream=9091
+    create: yes
