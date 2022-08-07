@@ -94,8 +94,30 @@ Grafana:
    - Prometheus Node Exporter Full - https://grafana.com/grafana/dashboards/1860
    - Prometheus Node Exporter Full Old - https://github.com/rfrail3/grafana-dashboards/blob/master/prometheus/node-exporter-full-old.json
 
+Cockpit:
+
 Set the OS user password for Cockpit.
 
 ```
 sudo passwd $USER
+```
+
+Use a proper cert.
+
+```
+cat <<"EOF" | sudo tee /etc/letsencrypt/renewal-hooks/deploy/cockpit.sh
+#!/bin/bash
+
+set -e
+set -u
+
+if [ "$RENEWED_LINEAGE" = /etc/letsencrypt/live/grafana-wildcard ]; then
+    cat "$RENEWED_LINEAGE/fullchain.pem" "$RENEWED_LINEAGE/privkey.pem" \
+        | install -o root -g root -m 0600 /dev/stdin /etc/cockpit/ws-certs.d/90-wildcard.cert
+
+    systemctl is-active cockpit.service >/dev/null && systemctl restart cockpit.service
+fi
+EOF
+
+sudo chmod +x /etc/letsencrypt/renewal-hooks/deploy/cockpit.sh
 ```
