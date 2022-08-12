@@ -10,6 +10,11 @@
     name: prometheus-node-exporter
     state: present
 
+- name: apt install prometheus-apache-exporter
+  apt:
+    name: prometheus-apache-exporter
+    state: present
+
 - name: prometheus - localhost binding
   lineinfile:
     path: /var/snap/prometheus/current/daemon_arguments
