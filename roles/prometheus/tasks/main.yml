@@ -5,14 +5,12 @@
     channel: 2/stable
     state: present
 
-- name: apt install prometheus-node-exporter
+- name: apt install - prometheus exporters
   apt:
-    name: prometheus-node-exporter
-    state: present
-
-- name: apt install prometheus-apache-exporter
-  apt:
-    name: prometheus-apache-exporter
+    name:
+    - prometheus-node-exporter
+    - prometheus-apache-exporter
+    - prometheus-blackbox-exporter
     state: present
 
 - name: prometheus - localhost binding

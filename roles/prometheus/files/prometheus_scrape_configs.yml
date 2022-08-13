@@ -13,3 +13,20 @@
     static_configs:
     - targets:
       - 'localhost:9117'
+
+  - job_name: blackbox
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+        - http://nobuto-murata.org
+        # TLSv1.3 doesn't work out of the box
+        #- https://grafana.t.739141.xyz:3000/login
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: localhost:9115
