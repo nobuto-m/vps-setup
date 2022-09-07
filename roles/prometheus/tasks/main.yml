@@ -17,7 +17,7 @@
   lineinfile:
     path: /var/snap/prometheus/current/daemon_arguments
     regexp: '^ARGS='
-    line: 'ARGS="--web.listen-address=127.0.0.1:9090"'
+    line: 'ARGS="--web.listen-address=127.0.0.1:9090 --storage.tsdb.retention.time=90d"'
 
 - name: scrape configurations
   blockinfile:
