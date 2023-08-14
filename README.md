@@ -93,7 +93,8 @@ Grafana:
    - default ones under `datasources`
    - Prometheus Node Exporter Full - https://grafana.com/grafana/dashboards/1860-node-exporter-full/
    - Prometheus Node Exporter Full Old - https://github.com/rfrail3/grafana-dashboards/blob/master/prometheus/node-exporter-full-old.json
-   - Blackbox Exporter (HTTP prober) - https://grafana.com/grafana/dashboards/13659-blackbox-exporter-http-prober/
+   - Blackbox Exporter (HTTP prober) - https://grafana.com/grafana/dashboards/13659-blackbox-exporter-http-prober/  
+     (setting timeout to 800ms [actual timeout is going to be 300ms with -500ms] might be better from the graph visualization point of view)
    - Apache - https://grafana.com/grafana/dashboards/3894-apache/
 
 Cockpit:
