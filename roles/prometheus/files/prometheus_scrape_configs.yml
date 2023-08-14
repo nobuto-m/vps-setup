@@ -35,6 +35,7 @@
     metrics_path: /probe
     params:
       module: [icmp]
+    scrape_timeout: 800ms  # icmp timeout to be 300ms with 500ms offset
     static_configs:
       - targets: []
     relabel_configs:
