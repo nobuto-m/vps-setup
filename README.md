@@ -3,7 +3,7 @@ Launch one VPS instance with Ubuntu 20.04 LTS
 Add swapfile.
 
 ```bash
-sudo dd if=/dev/zero of=/swap.img bs=4M count=128
+sudo dd if=/dev/zero of=/swap.img bs=10M count=200
 sudo chmod 0600 /swap.img
 sudo mkswap /swap.img
 
